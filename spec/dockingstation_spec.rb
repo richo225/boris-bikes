@@ -10,14 +10,15 @@ describe DockingStation do
     expect(subject).to respond_to(:release_bike)
   end
 
-  it "releases a bike when release_bike called" do
-    expect(subject.release_bike).to be_a Bike
+  it "releases a working bike" do
+    bike = subject.release_bike
+    expect(bike).to be_working
   end
   #expect an instance of dockingstation to return an instance of a bike when release bike called
 
-  it "releases a working bike" do
-    expect((subject.release_bike).working?).to eq true
-  end
+#  it "releases a working bike" do
+#    expect((subject.release_bike).working?).to eq true
+#  end
   #expect an instance of dockingstation to return a working bike when release bike called
 end
 
