@@ -36,9 +36,8 @@ describe DockingStation do
 
   describe "#dock_bike" do
     it "doesn't accept bike when already one" do
-      bike = Bike.new
-      subject.dock_bike(bike)
-      expect{subject.dock_bike(bike)}.to raise_exception('Station full!')
+      20.times {subject.dock_bike(Bike.new)}
+      expect{subject.dock_bike(Bike.new)}.to raise_exception('Station full!')
     end
 
   end
@@ -49,13 +48,13 @@ describe DockingStation do
 
   it "docked bike returns a bike" do
     bike = Bike.new
-    expect(subject.dock_bike(bike)).to eq bike
+    expect(subject.dock_bike(bike)).to eq subject.bikes
   end
 
-  it "bike method returns docked bike" do
+  it "bikes attribute reader returns docked bikes" do
     bike = Bike.new
     subject.dock_bike(bike)
-    expect(subject.bike).to eq bike
+    expect(subject.bikes).to eq subject.bikes
   end
 
 end
