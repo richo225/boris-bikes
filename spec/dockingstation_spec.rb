@@ -41,4 +41,8 @@ describe DockingStation do
     expect(subject.bike).to eq bike
   end
 
+  it "doesn't release when there aren't any" do
+    expect{subject.release_bike}.to raise_exception('No bikes!')
+  end
+
 end

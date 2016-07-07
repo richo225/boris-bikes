@@ -3,6 +3,7 @@ require_relative "bike.rb"
 class DockingStation
 
   def release_bike
+    raise 'No bikes!'
     Bike.new
   end
 
