@@ -9,15 +9,26 @@ class DockingStation
   end
 
   def release_bike
-    raise 'No bikes!' if @bikes.length == 0
+    raise 'No bikes!' if empty?
     @bikes.pop
   end
 
   def dock_bike(bike)
-    raise 'Station full!' if @bikes.length >= 20
+    raise 'Station full!' if full?
     # We need to return the bike we dock
     @bikes << bike
   end
 
   attr_reader :bikes
+
+  private
+
+  def full?
+    @bikes.length >= 20
+  end
+
+  def empty?
+    @bikes.length == 0
+  end
+
 end
