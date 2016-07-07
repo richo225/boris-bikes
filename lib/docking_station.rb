@@ -11,7 +11,5 @@ class DockingStation
     @bike = bike
   end
 
-  def bike
-    @bike  #return that same stored/docked bike
-  end
+  attr_reader :bike
 end
