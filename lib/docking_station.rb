@@ -8,6 +8,7 @@ class DockingStation
   end
 
   def dock_bike(bike)
+    raise 'Station full!' if @bike
     # We need to return the bike we dock
     @bike = bike
   end
