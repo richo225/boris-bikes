@@ -23,8 +23,7 @@ describe DockingStation do
 #  end
 
   it "docks a bike" do
-    expect(subject).to respond_to(:dock_bike)
+    expect(subject).to respond_to(:dock_bike).with(1).argument
   end
-
 
 end
