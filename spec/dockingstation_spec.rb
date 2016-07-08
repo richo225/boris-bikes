@@ -58,9 +58,12 @@ describe DockingStation do
   end
 
   describe "#initialize" do
-    it "allows user to set a capacity" do
+    #it "allows user to set a capacity" do
+      #expect(DockingStation.new(8)).to (assigns(DockingStation.new.capacity)).to(8)
+    #end
+
+    it "uses default capacity if no capacity given" do
       expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
     end
   end
-
 end
