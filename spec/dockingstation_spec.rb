@@ -36,7 +36,7 @@ describe DockingStation do
 
   describe "#dock_bike" do
     it "doesn't accept bike when already one" do
-      DockingStation::DEFAULT_CAPACITY.times {subject.dock_bike(Bike.new)}
+      subject.capacity.times {subject.dock_bike(Bike.new)}
       expect{subject.dock_bike(Bike.new)}.to raise_exception('Station full!')
     end
 
@@ -59,7 +59,7 @@ describe DockingStation do
 
   describe "#initialize" do
     it "allows user to set a capacity" do
-      expect(subject.initialize(10)).to eq capacity=10
+      expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
     end
   end
 

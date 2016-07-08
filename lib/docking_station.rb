@@ -9,6 +9,8 @@ class DockingStation
     @capacity = capacity
   end
 
+  attr_reader :capacity
+
   def release_bike
     raise 'No bikes!' if empty?
     @bikes.pop
@@ -25,7 +27,7 @@ class DockingStation
   private
 
   def full?
-    @bikes.length >= DEFAULT_CAPACITY
+    @bikes.length >= @capacity
   end
 
   def empty?
