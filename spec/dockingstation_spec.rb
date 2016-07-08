@@ -15,11 +15,7 @@ describe DockingStation do
 #    bike = subject.release_bike
 #    expect(bike.working?).to eq true
 #  end
-  it "releases a working bike" do
-    bike = Bike.new
-    subject.dock_bike(bike)
-    expect(bike).to be_working
-  end
+
 
     describe "#release_bike" do
       #test that the released bike is a docked bike
@@ -27,6 +23,12 @@ describe DockingStation do
         bike = Bike.new
         subject.dock_bike(bike)
         expect(subject.release_bike).to eq bike
+      end
+      it 'won\'t release a broken bike' do
+        bike = Bike.new
+        bike.report_broken
+        subject.dock_bike(bike)
+        expect{subject.release_bike}.to raise_exception('There are no working bikes!')
       end
       #test that returns an error if there's no bikes to be released
       it "doesn't release a bike when there aren't any" do

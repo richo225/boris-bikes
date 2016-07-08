@@ -1,7 +1,11 @@
 require "bike"
 
 describe Bike do
-  it 'responds to working?' do
-    expect(subject).to respond_to :working?
+  it 'responds to broken?' do
+    expect(subject).to respond_to :broken?
+  end
+
+  it 'can be reported broken' do
+    expect(subject).to respond_to :report_broken
   end
 end
