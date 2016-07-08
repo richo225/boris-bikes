@@ -21,7 +21,7 @@ describe DockingStation do
     expect(bike).to be_working
   end
 
-    describe "release_bike" do
+    describe "#release_bike" do
       #test that the released bike is a docked bike
       it "releases a docked bike" do
         bike = Bike.new
@@ -55,6 +55,12 @@ describe DockingStation do
     bike = Bike.new
     subject.dock_bike(bike)
     expect(subject.bikes).to eq subject.bikes
+  end
+
+  describe "#initialize" do
+    it "allows user to set a capacity" do
+      expect(subject.initialize(10)).to eq capacity=10
+    end
   end
 
 end
