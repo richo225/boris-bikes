@@ -20,12 +20,12 @@ describe DockingStation do
     describe "#release_bike" do
       #test that the released bike is a docked bike
       it "releases a docked bike" do
-        bike = Bike.new
+        bike = double(:bike)
         subject.dock_bike(bike)
         expect(subject.release_bike).to eq bike
       end
       it 'won\'t release a broken bike' do
-        bike = Bike.new
+        bike = double(:bike)
         bike.report_broken
         subject.dock_bike(bike)
         expect{subject.release_bike}.to raise_exception('There are no working bikes!')
@@ -38,8 +38,8 @@ describe DockingStation do
 
   describe "#dock_bike" do
     it "doesn't accept bike when already one" do
-      subject.capacity.times {subject.dock_bike(Bike.new)}
-      expect{subject.dock_bike(Bike.new)}.to raise_exception('Station full!')
+      subject.capacity.times {subject.dock_bike(double(:bike))}
+      expect{subject.dock_bike(double(:bike))}.to raise_exception('Station full!')
     end
 
   end
@@ -49,12 +49,12 @@ describe DockingStation do
   end
 
   it "docked bike returns a bike" do
-    bike = Bike.new
+    bike = double(:bike)
     expect(subject.dock_bike(bike)).to eq subject.bikes
   end
 
   it "bikes attribute reader returns docked bikes" do
-    bike = Bike.new
+    bike = double(:bike)
     subject.dock_bike(bike)
     expect(subject.bikes).to eq subject.bikes
   end
