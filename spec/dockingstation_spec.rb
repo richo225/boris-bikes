@@ -6,11 +6,11 @@ describe DockingStation do
     expect(subject).to respond_to(:release_bike)
   end
 
+let (:bike) {double :bike} #extract bike double to a let statement - don't need bike=double(:bike)
 #------------------------------------------------------------------------------------------------
   describe "#release_bike" do
     #if the bike isn't broken then it's a working bike and is released
     it "releases a working docked bike" do
-      bike = double(:bike)
       #allow the double("bike") to respond_to the broken? method and return false
       allow(bike).to receive(:broken?).and_return(false)
       subject.dock_bike(bike)
@@ -20,7 +20,6 @@ describe DockingStation do
 
     #if bike has report_broken called on it, dock it but don't release it
     it "won\'t release a broken bike" do
-      bike = double(:bike)
       #allow the double("bike") to respond_to the broken? method and return true
       allow(bike).to receive(:broken?).and_return(true)
       subject.dock_bike(bike) #docking station needs a bike first before can release
@@ -36,7 +35,6 @@ describe DockingStation do
 #--------------------------------------------------------------------------------------------------
   describe "#dock_bike" do
     it "doesn't accept bike when already one" do
-      bike = double(:bike)
       subject.capacity.times {subject.dock_bike(bike)}
       expect{subject.dock_bike(bike)}.to raise_exception('Station full!')
     end
@@ -47,12 +45,10 @@ describe DockingStation do
     end
 
     it "docked bike returns a bike" do
-      bike = double(:bike)
       expect(subject.dock_bike(bike)).to eq subject.bikes
     end
 
     it "bikes attribute reader returns docked bikes" do
-      bike = double(:bike)
       subject.dock_bike(bike)
       expect(subject.bikes).to eq subject.bikes
     end
